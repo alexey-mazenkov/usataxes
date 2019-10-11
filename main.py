@@ -5,10 +5,8 @@
 #              K.Kravtsov  -
 #              A.Mikhailov -
 
-subject_type = input()         # Тип субъекта
-income = float(input())  # Доход субьекта
-
 def formula(
+        income,
         first,
         second,
         third,
@@ -16,7 +14,9 @@ def formula(
         fifth,
         sixth
 ):
-    '''
+    """
+
+    :param income:
     :param first:
     :param second:
     :param third:
@@ -24,7 +24,7 @@ def formula(
     :param fifth:
     :param sixth:
     :return:
-    '''
+    """
 
     # Заведем Переменные для дохода, начиная с которого, идет переход
     # На следующую ступень ставки налогообложения
@@ -64,14 +64,33 @@ def formula(
     else:
         price = lim_1 + lim_2 + lim_3 + lim_4 + lim_5 + lim_6 + 0.396 * (income - rate_6)
 
-if subject_type == 'one subject':
-    formula(9075, 36900, 89350, 186350, 405100, 406750)   # Для одного субъекта
-
-if subject_type == 'married couple':
-    formula(18150, 73800, 148850, 226850, 405100, 457600) # Для супружеской пары
-
-if subject_type == 'single parent':
-    formula(12950, 49400, 127550, 206600, 405100,432200))   # Для родителя-одиночки
 
 
 def main():
+    subject_type = input()  # Тип субъекта
+    number_month = int(input())
+    name_month = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
+    i = 0
+    price = 0
+    all_price = 0
+    income = 0
+    while i < number_month:
+        income_month = float(input())  # Доход субьекта за месяц
+        print('Income for', name_month[i], 'made up', income_month)
+        income += income_month
+        i += 1
+    print('Income for year made up', income)
+    if subject_type == 'one subject':
+        formula(income, 9075, 36900, 89350, 186350, 405100, 406750)  # Для одного субъекта
+
+    elif subject_type == 'married couple':
+        formula(income, 18150, 73800, 148850, 226850, 405100, 457600)  # Для супружеской пары
+
+    elif subject_type == 'single parent':
+        formula(income, 12950, 49400, 127550, 206600, 405100, 432200)  # Для родителя-одиночки
+    else:
+        print('Введите верное имя субъекта')
+    all_price += price
+    print('Аnnual tax deductions are equal', all_price)
+
+main()
