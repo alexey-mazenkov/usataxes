@@ -4,3 +4,17 @@
 # Developers : A.Mazenkov  -
 #              K.Kravtsov  -
 #              A.Mikhailov -
+
+a = input()         # Тип субъекта
+b = float(input())  # Доход субьекта
+
+def tax1():        # Для одного субъекта
+
+
+def tax2():         # Для супружеской пары
+
+
+def tax3():         # Для родителя-одиночки
+
+
+def main():
