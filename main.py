@@ -3,7 +3,7 @@
 
 # Developers : A.Mazenkov  -
 #              K.Kravtsov  - 65%
-#              A.Mikhailov -
+#              A.Mikhailov - 30%
 
 def formula(
         income,
