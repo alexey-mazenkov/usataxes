@@ -71,7 +71,7 @@ if subject_type == 'married couple':
     formula(18150, 73800, 148850, 226850, 405100, 457600) # Для супружеской пары
 
 if subject_type == 'single parent':
-    formula()   # Для родителя-одиночки
+    formula(12950, 49400, 127550, 206600, 405100,432200))   # Для родителя-одиночки
 
 
 def main():
