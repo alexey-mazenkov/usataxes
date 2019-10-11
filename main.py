@@ -1,9 +1,13 @@
-# Задача : разработать программу для вычисления
-# суммарного годового дохода с налогов.
-
 # Developers : A.Mazenkov  -
 #              K.Kravtsov  - 65%
 #              A.Mikhailov - 30%
+
+import localization as lc
+
+lc.lang = str()  # Choose the language.
+
+
+# Tax calculation formula.
 
 def formula(
         income,
@@ -26,8 +30,8 @@ def formula(
     :return:
     """
 
-    # Заведем Переменные для дохода, начиная с которого, идет переход
-    # На следующую ступень ставки налогообложения
+    # Creation of variables for income
+    # starting from which the transition to the next level of the tax rate.
 
     rate_1 = first
     rate_2 = second - first
@@ -36,7 +40,7 @@ def formula(
     rate_5 = fifth - fourth
     rate_6 = sixth - fifth
 
-    # Заведем переменные для налоговых сборов с каждой ступени налога
+    # Creating Variables for Tax Charges from Each Tax Level.
 
     lim_1 = 0.1 * rate_1
     lim_2 = 0.15 * rate_2
@@ -44,7 +48,7 @@ def formula(
     lim_4 = 0.28 * rate_4
     lim_5 = 0.33 * rate_5
     lim_6 = 0.35 * rate_6
-    price = 0
+
     if income <= sixth:
         if income <= fifth:
             if income <= fourth:
@@ -68,33 +72,33 @@ def formula(
 
 
 def main():
-    subject_type = input()  # Тип субъекта
-    number_month = int(input())
-    name_month = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
+    print(lc.start_message)
+    subject_type = int(input())  # Subject type input.
+
+    number_month = 12
+    name_month = [lc.yan, lc.feb, lc.mar, lc.apr, lc.may, lc.jun, lc.jul, lc.aug, lc.sep, lc.october, lc.nov, lc.dec]
+
     i = 0
-    price = 0
-    all_price = 0
     income = 0
     while i < number_month:
-        income_month = float(input())  # Доход субьекта за месяц
-        print('Income for', name_month[i], 'made up', income_month)
+        print(lc.enter_revenue, name_month[i])
+        income_month = float(input())  # Subject income per month.
+        print(lc.income_for, name_month[i], lc.made_up, income_month)
         income += income_month
         i += 1
-    print('Income for year made up', income)
 
-    print('Аnnual tax deductions are equal')
+    print(lc.income_year, income)
 
-    if subject_type == 'one subject':
-        formula(income, 9075, 36900, 89350, 186350, 405100, 406750)  # Для одного субъекта
+    print(lc.annual_tax)
 
-    elif subject_type == 'married couple':
-        formula(income, 18150, 73800, 148850, 226850, 405100, 457600)  # Для супружеской пары
+    if subject_type == 1:
+        formula(income, 9075, 36900, 89350, 186350, 405100, 406750)  # Calculation for one subject.
 
-    elif subject_type == 'single parent':
-        formula(income, 12950, 49400, 127550, 206600, 405100, 432200)  # Для родителя-одиночки
+    elif subject_type == 2:
+        formula(income, 18150, 73800, 148850, 226850, 405100, 457600)  # Calculation for a married couple.
 
-    else:
-        print('Введите верное имя субъекта')
+    elif subject_type == 3:
+        formula(income, 12950, 49400, 127550, 206600, 405100, 432200)  # Calculation for a single parent.
 
 
 main()
