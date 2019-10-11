@@ -2,7 +2,7 @@
 # суммарного годового дохода с налогов.
 
 # Developers : A.Mazenkov  -
-#              K.Kravtsov  -
+#              K.Kravtsov  - 65%
 #              A.Mikhailov -
 
 def formula(
@@ -44,6 +44,7 @@ def formula(
     lim_4 = 0.28 * rate_4
     lim_5 = 0.33 * rate_5
     lim_6 = 0.35 * rate_6
+    price = 0
     if income <= sixth:
         if income <= fifth:
             if income <= fourth:
@@ -63,7 +64,7 @@ def formula(
             price = lim_1 + lim_2 + lim_3 + lim_4 + lim_5 + 0.35 * (income - rate_5)
     else:
         price = lim_1 + lim_2 + lim_3 + lim_4 + lim_5 + lim_6 + 0.396 * (income - rate_6)
-
+    print('{:.2f}'.format(price))
 
 
 def main():
@@ -80,6 +81,9 @@ def main():
         income += income_month
         i += 1
     print('Income for year made up', income)
+
+    print('Аnnual tax deductions are equal')
+
     if subject_type == 'one subject':
         formula(income, 9075, 36900, 89350, 186350, 405100, 406750)  # Для одного субъекта
 
@@ -88,9 +92,9 @@ def main():
 
     elif subject_type == 'single parent':
         formula(income, 12950, 49400, 127550, 206600, 405100, 432200)  # Для родителя-одиночки
+
     else:
         print('Введите верное имя субъекта')
-    all_price += price
-    print('Аnnual tax deductions are equal', all_price)
+
 
 main()
