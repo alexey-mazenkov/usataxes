@@ -1,4 +1,4 @@
-# Developers : A.Mazenkov  -
+# Developers : A.Mazenkov  - 45%
 #              K.Kravtsov  - 65%
 #              A.Mikhailov - 30%
 
